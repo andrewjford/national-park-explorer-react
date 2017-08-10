@@ -5,6 +5,6 @@ High
 
 Moderate
 - Change map marker icon
--
+- Store map center coords
 
 Low

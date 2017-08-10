@@ -2,9 +2,23 @@ h1 {
   text-align: center;
 }
 
+nav {
+  background-color: blue;
+  padding: 12px 12px;
+}
 
 .leaflet-container {
   height: 600px;
   width: 80%;
   margin: 0 auto;
+}
+
+.nav-link {
+  width: 100px;
+  padding: 12px;
+  margin: 6px 6px;
+  background: blue;
+  textDecoration: none;
+  color: white;
+  text-decoration: none;
 }
