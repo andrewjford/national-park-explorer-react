@@ -3,7 +3,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchVisitorCenters } from '../actions/npsActions'
+import { fetchParks } from '../actions/npsActions'
 
 class MapContainer extends React.Component {
 
@@ -20,7 +20,7 @@ class MapContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchVisitorCenters();
+    this.props.fetchParks();
   }
 
   lol() {
@@ -50,13 +50,13 @@ class MapContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    visitorCenters: state.nps.visitorCenters,
+    parks: state.nps.parks,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchVisitorCenters: fetchVisitorCenters,
+    fetchParks: fetchParks,
   }, dispatch)
 }
 

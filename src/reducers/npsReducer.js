@@ -1,7 +1,7 @@
-function npsReducer(state = {visitorCenters: []}, action) {
+function npsReducer(state = {parks: []}, action) {
   switch(action.type){
-    case 'FETCH_VISITORCENTERS':
-      return {...state, visitorCenters: action.payload}
+    case 'FETCH_PARKS':
+      return {...state, parks: action.payload}
     default:
       return state;
   }
