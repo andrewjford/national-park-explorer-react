@@ -1,11 +1,30 @@
 import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
-export default class MapContainer extends React.Component {
-  state = {
-    lat: 37.0902,
-    lng: -95.7129,
-    zoom: 4,
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchVisitorCenters } from '../actions/npsActions'
+
+class MapContainer extends React.Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      lat: 37.0902,
+      lng: -95.7129,
+      zoom: 4,
+    }
+
+    this.lol = this.lol.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchVisitorCenters();
+  }
+
+  lol() {
+    console.log(this.props)
   }
 
   render() {
@@ -20,6 +39,7 @@ export default class MapContainer extends React.Component {
           <Popup>
             <span>
               A pretty CSS3 popup. <br /> Easily customizable.
+              <button onClick={this.lol}>LOL</button>
             </span>
           </Popup>
         </Marker>
@@ -27,3 +47,17 @@ export default class MapContainer extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    visitorCenters: state.nps.visitorCenters,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    fetchVisitorCenters: fetchVisitorCenters,
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);
