@@ -28,6 +28,23 @@ class MapContainer extends React.Component {
   }
 
   render() {
+
+    const markers = this.props.parks.map((park, index) => {
+
+      //convert lat_long string to array with just numbers
+      const prePos = park.lat_long.split(",")
+      const position =[ Number(prePos[0].match(/-?[\d]+[.][\d]+/)[0]),
+      Number(prePos[1].match(/-?[\d]+[.][\d]+/)[0]) ]
+
+      return <Marker position={position} key={index}>
+        <Popup>
+          <span>
+            {park.full_name}
+          </span>
+        </Popup>
+      </Marker>
+    })
+
     const position = [this.state.lat, this.state.lng]
     return (
       <Map center={position} zoom={this.state.zoom}>
@@ -43,6 +60,7 @@ class MapContainer extends React.Component {
             </span>
           </Popup>
         </Marker>
+        {markers}
       </Map>
     )
   }
