@@ -10,12 +10,6 @@ class MapContainer extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      lat: 37.0902,
-      lng: -95.7129,
-      zoom: 4,
-    }
-
     this.lol = this.lol.bind(this);
   }
 
@@ -45,21 +39,14 @@ class MapContainer extends React.Component {
       </Marker>
     })
 
-    const position = [this.state.lat, this.state.lng]
+    const origin = [37.0902, -95.7129]
+    const zoom = 4
     return (
-      <Map center={position} zoom={this.state.zoom}>
+      <Map center={origin} zoom={zoom}>
         <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+          attribution='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
+          url="https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYWpvZWZvcmQiLCJhIjoiY2o2NnhqM3F0MDB0bDJxbjY0dXAwYnRwaSJ9.KqwaHtjfnfhFjk1SQrd93Q"
         />
-        <Marker position={position}>
-          <Popup>
-            <span>
-              A pretty CSS3 popup. <br /> Easily customizable.
-              <button onClick={this.lol}>LOL</button>
-            </span>
-          </Popup>
-        </Marker>
         {markers}
       </Map>
     )
