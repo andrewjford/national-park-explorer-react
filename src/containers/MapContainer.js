@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map, Marker, Popup, TileLayer, Circle } from 'react-leaflet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
@@ -13,15 +13,10 @@ class MapContainer extends React.Component {
   constructor() {
     super();
 
-    this.lol = this.lol.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchParks();
-  }
-
-  lol() {
-    console.log(this.props)
   }
 
   static contextTypes = {
@@ -45,12 +40,11 @@ class MapContainer extends React.Component {
             {park.full_name}
             <br/>
             <LinkWithContext to="/test" >Test</LinkWithContext>
+            <LinkWithContext to={`/parks/${park.id}`}>Details</LinkWithContext>
           </span>
-          {/* <Link to={`/parks/${props.park.id}"`}
-           >Details</Link> */}
         </Popup>
       </Marker>
-      // <ParkMarker park={park} position={position} key={index}/>
+
     })
 
     const origin = [37.0902, -95.7129]
