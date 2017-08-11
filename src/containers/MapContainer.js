@@ -1,9 +1,12 @@
 import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchParks } from '../actions/npsActions'
+import { Link } from 'react-router-dom';
+
+import { fetchParks } from '../actions/npsActions';
+import ParkMarker from '../components/ParkMarker';
+import contextWrapper from '../helpers/contextWrapper';
 
 class MapContainer extends React.Component {
 
@@ -21,6 +24,10 @@ class MapContainer extends React.Component {
     console.log(this.props)
   }
 
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  }
+
   render() {
 
     const markers = this.props.parks.map((park, index) => {
@@ -30,13 +37,20 @@ class MapContainer extends React.Component {
       const position =[ Number(prePos[0].match(/-?[\d]+[.][\d]+/)[0]),
       Number(prePos[1].match(/-?[\d]+[.][\d]+/)[0]) ]
 
+      const LinkWithContext = contextWrapper(Link, this.context)
+
       return <Marker position={position} key={index}>
         <Popup>
           <span>
             {park.full_name}
+            <br/>
+            <LinkWithContext to="/test" >Test</LinkWithContext>
           </span>
+          {/* <Link to={`/parks/${props.park.id}"`}
+           >Details</Link> */}
         </Popup>
       </Marker>
+      // <ParkMarker park={park} position={position} key={index}/>
     })
 
     const origin = [37.0902, -95.7129]
