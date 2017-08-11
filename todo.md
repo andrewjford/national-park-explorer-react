@@ -4,8 +4,8 @@ High
 
 Moderate
 - Change map marker icon
-- Store map center coords
 - move mapbox token out of js
+- see if markers code can be refactored out of map container - not sure because of leaflet context issues
 
 Low
 - zoom on park marker select
