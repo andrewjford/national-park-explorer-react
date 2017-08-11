@@ -12,3 +12,5 @@ Low
 - add visitor centers on park marker select
 - change map tile to improve park
 - user system to allow individuals to flag and add personal notes to each park
+
+- moveend event trigger gets fired twice on Leaflet Map
