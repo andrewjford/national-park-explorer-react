@@ -3,7 +3,7 @@ h1 {
 }
 
 nav {
-  background-color: blue;
+  background-color: #63a70a;
   padding: 12px 12px;
 }
 
@@ -17,8 +17,7 @@ nav {
   width: 100px;
   padding: 12px;
   margin: 6px 6px;
-  background: blue;
-  textDecoration: none;
+  background: #63a70a;
   color: white;
   text-decoration: none;
 }
