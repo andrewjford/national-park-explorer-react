@@ -1,4 +1,5 @@
 body {
+  background-image: url('./glacier1.1.jpg');
   background-color: #edf2fb;
 }
 
@@ -20,6 +21,8 @@ nav {
   height: 600px;
   width: 80%;
   margin: 0 auto;
+  border-style: solid;
+  border-color: #5d422b;
 }
 
 .nav-link {
