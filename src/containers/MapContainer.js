@@ -22,6 +22,10 @@ class MapContainer extends React.Component {
     router: PropTypes.object.isRequired
   }
 
+  handleMarkerClick =(event) => {
+    this.leafletMap.leafletElement.flyTo(event.latlng, 8);
+  }
+
   render() {
 
     const markers = this.props.parks.map((park, index) => {
@@ -33,7 +37,7 @@ class MapContainer extends React.Component {
 
       const LinkWithContext = contextWrapper(Link, this.context)
 
-      return <Marker position={position} key={index}>
+      return <Marker position={position} key={index} onClick={this.handleMarkerClick}>
         <Popup>
           <span>
             {park.full_name}
