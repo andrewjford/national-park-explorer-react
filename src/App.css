@@ -1,13 +1,18 @@
+body {
+  background-color: #edf2fb;
+}
+
 .App {
-  background-color: #fbf5ed;
+  background-color: #edf2fb;
 }
 
 h1 {
   text-align: center;
+  color: #1f634c;
 }
 
 nav {
-  background-color: #63a70a;
+  background-color: #8abfb8;
   padding: 12px 12px;
 }
 
@@ -21,7 +26,8 @@ nav {
   width: 100px;
   padding: 12px;
   margin: 6px 6px;
-  background: #63a70a;
+  background: #8abfb8;
   color: white;
   text-decoration: none;
+  font-weight: bold;
 }

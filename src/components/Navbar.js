@@ -7,14 +7,14 @@ const Navbar = (props) => {
       exact
       className="nav-link"
       activeStyle={{
-        background: '#385f05'
+        background: '#1f634c'
       }} >Home</NavLink>
 
       <NavLink to="/test"
       exact
       className="nav-link"
       activeStyle={{
-        background: '#385f05'
+        background: '#1f634c'
       }} >Test</NavLink>
 
     </nav>
