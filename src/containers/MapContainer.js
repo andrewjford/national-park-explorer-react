@@ -3,6 +3,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { saveMapPosition } from '../actions/mapActions';
 import contextWrapper from '../helpers/contextWrapper';
@@ -18,7 +19,7 @@ class MapContainer extends React.Component {
   }
 
   static contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
   }
 
   render() {

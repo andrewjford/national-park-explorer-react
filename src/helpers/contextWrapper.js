@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function contextWrapper(WrappedComponent, context){
 
@@ -14,7 +15,7 @@ function contextWrapper(WrappedComponent, context){
 
   ContextProvider.childContextTypes = {};
   Object.keys(context).forEach(key => {
-    ContextProvider.childContextTypes[key] = React.PropTypes.any.isRequired;
+    ContextProvider.childContextTypes[key] = PropTypes.any.isRequired;
   });
 
   return ContextProvider;
