@@ -15,3 +15,8 @@ Low
 - user system to allow individuals to flag and add personal notes to each park
 
 - moveend event trigger gets fired twice on Leaflet Map
+
+
+BACKEND
+
+- Modify serialization of db stored park data to match json that is passed through from NPS API

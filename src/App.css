@@ -1,6 +1,6 @@
-body {
-  background-image: url('./glacier1.1.jpg');
+html, body, #root, .App, main {
   background-color: #edf2fb;
+  height: 100%;
 }
 
 .App {
@@ -12,17 +12,23 @@ h1 {
   color: #1f634c;
 }
 
+main {
+  width: 100%;
+  margin: 0 auto;
+}
+
 nav {
   background-color: #8abfb8;
   padding: 12px 12px;
+  height: 16px;
 }
 
 .leaflet-container {
-  height: 600px;
-  width: 80%;
+  height: 100%;
   margin: 0 auto;
-  border-style: solid;
-  border-color: #5d422b;
+  border-top: solid grey;
+  /*border-style: solid;
+  border-color: #5d422b;*/
 }
 
 .nav-link {

@@ -50,13 +50,10 @@ class MapContainer extends React.Component {
 
     })
 
-    return <div>
-      <h1>National Park Explorer</h1>
-      <Map center={this.props.map.center}
+    return <Map center={this.props.map.center}
         zoom={this.props.map.zoom}
         //bind leaflet Map object to this.leafletMap reference
         ref={m => {this.leafletMap = m;}}>
-
         <TileLayer
           attribution='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
           url="https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYWpvZWZvcmQiLCJhIjoiY2o2NnhqM3F0MDB0bDJxbjY0dXAwYnRwaSJ9.KqwaHtjfnfhFjk1SQrd93Q"
@@ -64,7 +61,6 @@ class MapContainer extends React.Component {
 
         {markers}
       </Map>
-    </div>
   }
 }
 

@@ -10,12 +10,12 @@ const Navbar = (props) => {
         background: '#1f634c'
       }} >Home</NavLink>
 
-      <NavLink to="/test"
+      <NavLink to="/parks/:id"
       exact
       className="nav-link"
       activeStyle={{
         background: '#1f634c'
-      }} >Test</NavLink>
+      }} >Park</NavLink>
 
     </nav>
 

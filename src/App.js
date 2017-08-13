@@ -20,9 +20,10 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={MapContainer} />
-          <Route exact path="/test" component={ParkContainer} />
-          <Route exact path="/parks/:id" component={ParkContainer} />
+          <main>
+            <Route exact path="/" component={MapContainer} />
+            <Route exact path="/parks/:id" component={ParkContainer} />
+          </main>
         </div>
       </Router>
     );
