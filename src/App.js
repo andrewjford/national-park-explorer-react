@@ -22,6 +22,7 @@ class App extends Component {
           <Navbar />
           <main>
             <Route exact path="/" component={MapContainer} />
+            <Route exact path="/parks" component={MapContainer} />
             <Route exact path="/parks/:id" component={ParkContainer} />
           </main>
         </div>

@@ -8,15 +8,19 @@ const Navbar = (props) => {
       className="nav-link"
       activeStyle={{
         background: '#1f634c'
-      }} >Home</NavLink>
+      }} >National Park Explorer</NavLink>
 
-      <NavLink to="/parks/:id"
+      <NavLink to="/parks"
       exact
       className="nav-link"
       activeStyle={{
         background: '#1f634c'
-      }} >Park</NavLink>
+      }} >Parks</NavLink>
 
+      <NavLink to="/"
+      className="nav-link"
+      id="siteTitle"
+      >Profile</NavLink>
     </nav>
 
 }

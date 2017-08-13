@@ -18,24 +18,20 @@ main {
 }
 
 nav {
-  background-color: #8abfb8;
+  background-color: #8ab1ac;
   padding: 12px 12px;
-  height: 16px;
+  border-bottom: solid #5d422b;
 }
 
 .leaflet-container {
   height: 100%;
   margin: 0 auto;
-  border-top: solid grey;
-  /*border-style: solid;
-  border-color: #5d422b;*/
 }
 
-.nav-link {
+nav .nav-link {
   width: 100px;
-  padding: 12px;
-  margin: 6px 6px;
-  background: #8abfb8;
+  padding: 13px;
+  background: #8ab1ac;
   color: white;
   text-decoration: none;
   font-weight: bold;
