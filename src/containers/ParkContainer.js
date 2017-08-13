@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { fetchPark } from '../actions/npsActions'
+import { fetchPark } from '../actions/npsActions';
+import Park from '../components/Park'
 
 class ParkContainer extends React.Component {
 
@@ -13,14 +14,7 @@ class ParkContainer extends React.Component {
   render() {
 
     if (this.props.park.name){
-      return <div>
-        <h1>{this.props.park.fullName}</h1>
-        <p>{this.props.park.description}</p>
-        <p>{this.props.park.weatherInfo}</p>
-        <span>Official Website: <a href={this.props.park.url}>{this.props.park.url}</a></span>
-        <br/>
-        <span>Directions: <a href={this.props.park.directionsUrl}>{this.props.park.directionsUrl}</a></span>
-      </div>
+      return <Park park={this.props.park} />
     }
     else {
       return <p>Loading...</p>

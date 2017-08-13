@@ -7,6 +7,11 @@ html, body, #root, .App, main {
   background-color: #edf2fb;
 }
 
+figcaption {
+  font-style: italic;
+  font-size: 0.9em;
+}
+
 h1 {
   text-align: center;
   color: #1f634c;
@@ -35,4 +40,13 @@ nav .nav-link {
   color: white;
   text-decoration: none;
   font-weight: bold;
+}
+
+.parkContainer {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.parkContainer img {
+  width: 100%;
 }
