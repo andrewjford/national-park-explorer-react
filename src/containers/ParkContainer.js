@@ -13,7 +13,7 @@ class ParkContainer extends React.Component {
 
   render() {
 
-    if (this.props.park.name){
+    if (this.props.park.db_id == this.props.id){
       return <Park park={this.props.park} />
     }
     else {

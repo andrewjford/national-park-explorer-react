@@ -1,6 +1,19 @@
 import React from 'react';
 
 const Park = (props) => {
+
+  const SecondImg = (props) => {
+    if(props.park.images[1]){
+      return <figure>
+          <img src={props.park.images[1].url} alt={props.park.images[1].altText}/>
+          <figcaption>{props.park.images[1].caption}</figcaption>
+        </figure>
+    }
+    else {
+      return null;
+    }
+  }
+
   return <div className="parkContainer">
     <h1>{props.park.fullName}</h1>
     <figure>
@@ -10,10 +23,7 @@ const Park = (props) => {
 
     <p>{props.park.description}</p>
 
-    <figure>
-      <img src={props.park.images[1].url} alt={props.park.images[1].altText}/>
-      <figcaption>{props.park.images[1].caption}</figcaption>
-    </figure>
+    <SecondImg park={props.park} />
 
     <p>{props.park.weatherInfo}</p>
     <span>Official Website: <a href={props.park.url}>{props.park.url}</a></span>
