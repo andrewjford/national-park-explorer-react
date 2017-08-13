@@ -20,9 +20,9 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <h1>National Park Explorer</h1>
           <Route exact path="/" component={MapContainer} />
           <Route exact path="/test" component={ParkContainer} />
+          <Route exact path="/parks/:id" component={ParkContainer} />
         </div>
       </Router>
     );

@@ -51,6 +51,7 @@ class MapContainer extends React.Component {
     })
 
     return <div>
+      <h1>National Park Explorer</h1>
       <Map center={this.props.map.center}
         zoom={this.props.map.zoom}
         //bind leaflet Map object to this.leafletMap reference
