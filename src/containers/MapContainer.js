@@ -16,6 +16,8 @@ class MapContainer extends React.Component {
     leafletMap.on('moveend', () => {
       this.props.saveMapPosition(leafletMap.getCenter(), leafletMap.getZoom());
     });
+
+
   }
 
   static contextTypes = {
@@ -52,6 +54,7 @@ class MapContainer extends React.Component {
 
     return <Map center={this.props.map.center}
         zoom={this.props.map.zoom}
+        style={{height: (window.innerHeight - 72)}}
         //bind leaflet Map object to this.leafletMap reference
         ref={m => {this.leafletMap = m;}}>
         <TileLayer

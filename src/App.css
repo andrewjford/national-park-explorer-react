@@ -1,15 +1,33 @@
-html, body, #root, .App, main {
-  background-color: #edf2fb;
+html, body, #root {
   height: 100%;
 }
 
 .App {
   background-color: #edf2fb;
+  min-height: 98%;
+  position: relative;
 }
 
 figcaption {
   font-style: italic;
   font-size: 0.9em;
+}
+
+.footer {
+  background-color: #8ab1ac;
+  padding: 4px 0 4px;
+  border-top: solid #5d422b;
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  height: 16px;
+}
+
+.footer a {
+  color: white;
 }
 
 h1 {
@@ -43,8 +61,9 @@ nav .nav-link {
 }
 
 .parkContainer {
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
+  padding-bottom: 24px;
 }
 
 .parkContainer img {

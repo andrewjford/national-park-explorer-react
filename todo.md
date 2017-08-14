@@ -9,6 +9,7 @@ Moderate
 - redo marker zoom into a zoom link rather than onClick
 
 Low
+- try other images if 404'd
 - on map movement, close popups
 - add visitor centers on park marker select
 - change map tile to improve park

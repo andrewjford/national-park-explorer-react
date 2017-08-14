@@ -25,6 +25,7 @@ const Park = (props) => {
 
     <SecondImg park={props.park} />
 
+    <h3>Weather</h3>
     <p>{props.park.weatherInfo}</p>
     <span>Official Website: <a href={props.park.url}>{props.park.url}</a></span>
     <br/>
