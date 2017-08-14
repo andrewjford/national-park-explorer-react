@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 import { saveMapPosition } from '../actions/mapActions';
 import contextWrapper from '../helpers/contextWrapper';
+import convertLatLng from '../helpers/mapHelpers';
 
 class MapContainer extends React.Component {
 
@@ -24,27 +25,24 @@ class MapContainer extends React.Component {
     router: PropTypes.object.isRequired
   }
 
-  handleMarkerClick =(event) => {
-    this.leafletMap.leafletElement.flyTo(event.latlng, 8);
+  handleZoomClick = (event) => {
+    event.preventDefault();
+    let position = convertLatLng(event.target.dataset.position);
+    this.leafletMap.leafletElement.flyTo(position, 9);
   }
 
   render() {
 
     const markers = this.props.parks.map((park, index) => {
-
-      //convert lat_long string to array with just numbers
-      const prePos = park.lat_long.split(",")
-      const position =[ Number(prePos[0].match(/-?[\d]+[.][\d]+/)[0]),
-      Number(prePos[1].match(/-?[\d]+[.][\d]+/)[0]) ]
-
+      const position = convertLatLng(park.lat_long)
       const LinkWithContext = contextWrapper(Link, this.context)
 
-      return <Marker position={position} key={index} onClick={this.handleMarkerClick}>
+      return <Marker position={position} key={index}>
         <Popup>
           <span>
             {park.full_name}
             <br/>
-            <LinkWithContext to="/test" >Test</LinkWithContext>
+            <a href="" data-position={position} onClick={this.handleZoomClick}>Zoom</a>
             <LinkWithContext to={`/parks/${park.id}`}>Details</LinkWithContext>
           </span>
         </Popup>

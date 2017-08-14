@@ -40,6 +40,10 @@ h1 {
   margin: 0 auto;
 }
 
+.leaflet-popup-content a {
+  padding-right: 2px;
+}
+
 main {
   padding-top: 45px;
   width: 100%;
@@ -57,7 +61,7 @@ nav {
 
 nav .nav-link {
   width: 100px;
-  padding: 13px;
+  padding: 12px;
   background: #8ab1ac;
   color: white;
   text-decoration: none;
