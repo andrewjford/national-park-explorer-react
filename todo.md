@@ -1,5 +1,6 @@
 High
 - Add additional info on popups
+- fix navbar to top
 
 Moderate
 - style indi page
