@@ -1,4 +1,5 @@
 import React from 'react';
+import { icon } from 'leaflet';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -32,12 +33,20 @@ class MapContainer extends React.Component {
   }
 
   render() {
+    var greenMarker = icon({
+      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
 
     const markers = this.props.parks.map((park, index) => {
       const position = convertLatLng(park.lat_long)
       const LinkWithContext = contextWrapper(Link, this.context)
 
-      return <Marker position={position} key={index}>
+      return <Marker icon={greenMarker} position={position} key={index}>
         <Popup>
           <span>
             {park.full_name}
