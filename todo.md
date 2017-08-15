@@ -1,5 +1,9 @@
 High
-- Add additional info on popups
+- Add additional info on popups <- ratings
+- add ratings column to parks table
+- add to model
+- build update endpoint
+- add rating to react
 
 Moderate
 - see if markers code can be refactored out of map container - not sure because of leaflet context issues

@@ -1,18 +1,7 @@
 import React from 'react';
+import ConditionalImg from './ConditionalImg';
 
 const Park = (props) => {
-
-  const SecondImg = (props) => {
-    if(props.park.images[1]){
-      return <figure>
-          <img src={props.park.images[1].url} alt={props.park.images[1].altText}/>
-          <figcaption>{props.park.images[1].caption}</figcaption>
-        </figure>
-    }
-    else {
-      return null;
-    }
-  }
 
   return <div className="parkContainer">
     <h1>{props.park.fullName}</h1>
@@ -23,7 +12,7 @@ const Park = (props) => {
 
     <p>{props.park.description}</p>
 
-    <SecondImg park={props.park} />
+    <ConditionalImg park={props.park} />
 
     <h3>Weather</h3>
     <p>{props.park.weatherInfo}</p>

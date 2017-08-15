@@ -1,17 +1,32 @@
 import React from 'react';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Marker, Popup } from 'react-leaflet';
+import { icon } from 'leaflet';
 import { Link } from 'react-router-dom';
 
+import contextWrapper from '../helpers/contextWrapper';
+import convertLatLng from '../helpers/mapHelpers';
+
 const ParkMarker = (props) => {
-  return <Marker position={props.position}>
+  var greenMarker = icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+  const position = convertLatLng(props.park.lat_long)
+  const LinkWithContext = contextWrapper(Link, props.context)
+
+  return <Marker icon={greenMarker} position={position}>
     <Popup>
       <span>
         {props.park.full_name}
         <br/>
-        <Link to="/">Test</Link>
+        <a href="" data-position={position} onClick={props.handleZoomClick}>Zoom</a>
+        <LinkWithContext to={`/parks/${props.park.id}`}>Details</LinkWithContext>
       </span>
-      {/* <Link to={`/parks/${props.park.id}"`}
-       >Details</Link> */}
     </Popup>
   </Marker>
 }

@@ -1,14 +1,12 @@
 import React from 'react';
-import { icon } from 'leaflet';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { saveMapPosition } from '../actions/mapActions';
-import contextWrapper from '../helpers/contextWrapper';
 import convertLatLng from '../helpers/mapHelpers';
+import ParkMarker from '../components/ParkMarker';
 
 class MapContainer extends React.Component {
 
@@ -18,10 +16,9 @@ class MapContainer extends React.Component {
     leafletMap.on('moveend', () => {
       this.props.saveMapPosition(leafletMap.getCenter(), leafletMap.getZoom());
     });
-
-
   }
 
+  // to set this react routing context for leaflet elements to access
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
@@ -33,30 +30,11 @@ class MapContainer extends React.Component {
   }
 
   render() {
-    var greenMarker = icon({
-      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41]
-    });
-
     const markers = this.props.parks.map((park, index) => {
-      const position = convertLatLng(park.lat_long)
-      const LinkWithContext = contextWrapper(Link, this.context)
-
-      return <Marker icon={greenMarker} position={position} key={index}>
-        <Popup>
-          <span>
-            {park.full_name}
-            <br/>
-            <a href="" data-position={position} onClick={this.handleZoomClick}>Zoom</a>
-            <LinkWithContext to={`/parks/${park.id}`}>Details</LinkWithContext>
-          </span>
-        </Popup>
-      </Marker>
-
+      return <ParkMarker park={park}
+        key={index}
+        handleZoomClick={this.handleZoomClick}
+        context={this.context} />
     })
 
     return <Map center={this.props.map.center}
