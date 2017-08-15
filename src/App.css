@@ -68,6 +68,11 @@ nav .nav-link {
   font-weight: bold;
 }
 
+.page-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .parkContainer {
   width: 80%;
   margin: 0 auto;
