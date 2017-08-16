@@ -4,3 +4,10 @@ export function changeRatingInput(park, newRating) {
     payload: {park: park, rating: newRating}
   }
 }
+
+export function flagSubmitted(parkCode) {
+  return {
+    type: 'FLAG_SUBMITTED',
+    payload: parkCode,
+  }
+}

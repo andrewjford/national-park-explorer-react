@@ -8,16 +8,32 @@ import { connect } from 'react-redux';
 import contextWrapper from '../helpers/contextWrapper';
 import convertLatLng from '../helpers/mapHelpers';
 import { postRating } from '../actions/npsActions';
-import { changeRatingInput } from '../actions/userActions';
+import { changeRatingInput, flagSubmitted } from '../actions/userActions';
+import RatingForm from './RatingForm';
 
 class ParkMarker extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      inputs: ""
+    }
+  }
+
+  // componentDidMount() {
+  //   this.props.changeRatingInput(this.props.park.parkCode, 3);
+  // }
 
   handleRatingSubmit = (event) => {
-    debugger;
+    event.preventDefault();
+    this.props.postRating(this.props.park.id, this.state.inputs);
+    // this.props.postRating(this.props.park.id, this.props.user.ratings[this.props.park.parkCode]);
+    // this.props.flagSubmitted(this.props.park.parkCode);
   }
 
   handleRatingChange = (event) => {
-    this.props.changeRatingInput(event.target.value);
+    this.setState({inputs: event.target.value})
+    // this.props.changeRatingInput(this.props.park.parkCode, event.target.value);
   }
 
   render() {
@@ -31,6 +47,7 @@ class ParkMarker extends React.Component {
     });
     const position = convertLatLng(this.props.park.latLong)
     const LinkWithContext = contextWrapper(Link, this.props.context)
+    // var ratingInput = this.props.user.ratings[this.props.park.parkCode] || 3
 
     return <Marker icon={greenMarker} position={position}>
       <Popup>
@@ -46,9 +63,15 @@ class ParkMarker extends React.Component {
             >Zoom</a>
           <LinkWithContext to={`/parks/${this.props.park.id}`}>Details</LinkWithContext>
           <br/>
+          {/* <RatingForm
+            ratingInput={this.props.user.ratings[this.props.park.parkCode]}
+            handleRatingChange={this.handleRatingChange}
+            handleRatingSubmit={this.handleRatingSubmit}
+            submitted={this.props.user.submitted.includes(this.props.park.parkCode)}
+          /> */}
           <form onSubmit={this.handleRatingSubmit}>
             <input type="number"
-              value={this.props.user.ratings[this.props.park.parkCode] || 3}
+              value={this.inputs}
               onChange={this.handleRatingChange}/>
             <input type="submit"/>
           </form>
@@ -67,7 +90,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     changeRatingInput: changeRatingInput,
-    postRating: postRating
+    postRating: postRating,
+    flagSubmitted: flagSubmitted,
   }, dispatch)
 }
 

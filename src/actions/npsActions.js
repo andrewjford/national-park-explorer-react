@@ -45,10 +45,13 @@ export function clearVisitorCenters() {
 
 export function postRating(id, rating) {
   return (dispatch) => {
-    return fetch(API_URL + `parks/${id}`, {
-      method: 'POST',
-      body: {rating: rating},
+    return fetch(API_URL + `parks/${id}?rating=` + rating, {
+      method: 'PATCH',
      })
-    .then(response => response)
+    .then(response => response.json())
+    .then(json => dispatch({
+      type: 'UPDATE_RATING',
+      payload: json,
+    }))
   }
 }

@@ -22,6 +22,13 @@ function npsReducer(state = {parks: [], currentPark:{}, centers: []}, action) {
       }
     case 'CLEAR_CENTERS':
       return {...state, centers: []};
+    case 'UPDATE_RATING':
+      var index = state.parks.findIndex((val) => {
+        return val.id === action.payload.id
+      })
+      return {...state,
+        parks: state.parks.slice(0,index).concat(action.payload).concat(state.parks.slice(index+1,state.parks.length))}
+
     default:
       return state;
   }
