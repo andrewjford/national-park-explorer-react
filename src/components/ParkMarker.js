@@ -12,28 +12,19 @@ import { changeRatingInput, flagSubmitted } from '../actions/userActions';
 import RatingForm from './RatingForm';
 
 class ParkMarker extends React.Component {
-  constructor() {
-    super();
 
-    this.state = {
-      inputs: ""
-    }
+  componentDidMount() {
+    this.props.changeRatingInput(this.props.park.parkCode, 3);
   }
-
-  // componentDidMount() {
-  //   this.props.changeRatingInput(this.props.park.parkCode, 3);
-  // }
 
   handleRatingSubmit = (event) => {
     event.preventDefault();
-    this.props.postRating(this.props.park.id, this.state.inputs);
-    // this.props.postRating(this.props.park.id, this.props.user.ratings[this.props.park.parkCode]);
-    // this.props.flagSubmitted(this.props.park.parkCode);
+    this.props.postRating(this.props.park.id, this.props.user.ratings[this.props.park.parkCode]);
+    this.props.flagSubmitted(this.props.park.parkCode);
   }
 
   handleRatingChange = (event) => {
-    this.setState({inputs: event.target.value})
-    // this.props.changeRatingInput(this.props.park.parkCode, event.target.value);
+    this.props.changeRatingInput(this.props.park.parkCode, event.target.value);
   }
 
   render() {
@@ -47,7 +38,6 @@ class ParkMarker extends React.Component {
     });
     const position = convertLatLng(this.props.park.latLong)
     const LinkWithContext = contextWrapper(Link, this.props.context)
-    // var ratingInput = this.props.user.ratings[this.props.park.parkCode] || 3
 
     return <Marker icon={greenMarker} position={position}>
       <Popup>
@@ -63,18 +53,12 @@ class ParkMarker extends React.Component {
             >Zoom</a>
           <LinkWithContext to={`/parks/${this.props.park.id}`}>Details</LinkWithContext>
           <br/>
-          {/* <RatingForm
+          <RatingForm
             ratingInput={this.props.user.ratings[this.props.park.parkCode]}
             handleRatingChange={this.handleRatingChange}
             handleRatingSubmit={this.handleRatingSubmit}
             submitted={this.props.user.submitted.includes(this.props.park.parkCode)}
-          /> */}
-          <form onSubmit={this.handleRatingSubmit}>
-            <input type="number"
-              value={this.inputs}
-              onChange={this.handleRatingChange}/>
-            <input type="submit"/>
-          </form>
+          />
         </span>
       </Popup>
     </Marker>

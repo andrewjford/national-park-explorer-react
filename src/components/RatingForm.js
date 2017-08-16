@@ -2,9 +2,9 @@ import React from 'react';
 
 const RatingForm = (props) => {
 
-  // if(props.submitted){
-  //   return <span>Your rating: {props.ratingInput}</span>
-  // }
+  if(props.submitted){
+    return <span>Your rating: {props.ratingInput}</span>
+  }
 
   return <form onSubmit={props.handleRatingSubmit}>
     <input type="number"

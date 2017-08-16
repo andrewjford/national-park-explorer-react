@@ -27,7 +27,10 @@ function npsReducer(state = {parks: [], currentPark:{}, centers: []}, action) {
         return val.id === action.payload.id
       })
       return {...state,
-        parks: state.parks.slice(0,index).concat(action.payload).concat(state.parks.slice(index+1,state.parks.length))}
+        parks: [...state.parks.slice(0,index),
+          action.payload,
+          ...state.parks.slice(index+1,state.parks.length)]
+        }
 
     default:
       return state;
