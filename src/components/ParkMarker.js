@@ -16,15 +16,19 @@ const ParkMarker = (props) => {
     shadowSize: [41, 41]
   });
 
-  const position = convertLatLng(props.park.lat_long)
+  const position = convertLatLng(props.park.latLong)
   const LinkWithContext = contextWrapper(Link, props.context)
 
   return <Marker icon={greenMarker} position={position}>
     <Popup>
       <span>
-        {props.park.full_name}
+        {props.park.fullName}
         <br/>
-        <a href="" data-position={position} onClick={props.handleZoomClick}>Zoom</a>
+        <a href=""
+          data-position={position}
+          data-parkcode={props.park.parkCode}
+          onClick={props.handleZoomClick}
+          >Zoom</a>
         <LinkWithContext to={`/parks/${props.park.id}`}>Details</LinkWithContext>
       </span>
     </Popup>

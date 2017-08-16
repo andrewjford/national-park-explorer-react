@@ -26,19 +26,13 @@ export function fetchPark(id) {
   }
 }
 
-// export function fetchPark(parkCode) {
-//   return (dispatch) => {
-//
-//     var myHeaders = new Headers();
-//     myHeaders.set('Authorization', NPS_KEY)
-//     return fetch(`https://developer.nps.gov/api/v0/parks`, {
-//       headers: myHeaders,
-//     })
-//     .then(response => response.json())
-//     .then(json => dispatch({
-//       type: 'FETCH_PARK',
-//       payload: json,
-//     }))
-//     .then(json => {debugger;})
-//   }
-// }
+export function fetchVisitorcenters(parkCode) {
+  return (dispatch) => {
+    return fetch(API_URL + `centers?parkCode=`+ parkCode)
+    .then(response => response.json())
+    .then(json => dispatch({
+      type: 'FETCH_CENTER',
+      payload: json,
+    }))
+  }
+}

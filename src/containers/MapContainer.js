@@ -1,10 +1,11 @@
 import React from 'react';
-import { Map, TileLayer } from 'react-leaflet';
+import { Map, TileLayer, Marker } from 'react-leaflet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 import { saveMapPosition } from '../actions/mapActions';
+import { fetchVisitorcenters } from '../actions/npsActions';
 import convertLatLng from '../helpers/mapHelpers';
 import ParkMarker from '../components/ParkMarker';
 
@@ -25,6 +26,8 @@ class MapContainer extends React.Component {
 
   handleZoomClick = (event) => {
     event.preventDefault();
+    this.props.fetchVisitorcenters(event.target.dataset.parkcode)
+
     let position = convertLatLng(event.target.dataset.position);
     this.leafletMap.leafletElement.flyTo(position, 9);
   }
@@ -37,6 +40,11 @@ class MapContainer extends React.Component {
         context={this.context} />
     })
 
+    const centerMarkers = this.props.centers.map((center, index) => {
+      const position = convertLatLng(center.latLong)
+      return <Marker position={position} key={index}></Marker>
+    })
+
     return <Map center={this.props.map.center}
         zoom={this.props.map.zoom}
         style={{height: (window.innerHeight - 72)}}
@@ -46,7 +54,7 @@ class MapContainer extends React.Component {
           attribution='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
           url="https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYWpvZWZvcmQiLCJhIjoiY2o2NnhqM3F0MDB0bDJxbjY0dXAwYnRwaSJ9.KqwaHtjfnfhFjk1SQrd93Q"
         />
-
+        {centerMarkers}
         {markers}
       </Map>
   }
@@ -55,13 +63,15 @@ class MapContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     parks: state.nps.parks,
-    map: state.map
+    map: state.map,
+    centers: state.nps.centers
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     saveMapPosition: saveMapPosition,
+    fetchVisitorcenters: fetchVisitorcenters,
   }, dispatch)
 }
 

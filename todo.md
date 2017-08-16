@@ -4,9 +4,9 @@ High
 - add to model
 - build update endpoint
 - add rating to react
+- on zoom out past 9, remove visitor center markers
 
 Moderate
-- see if markers code can be refactored out of map container - not sure because of leaflet context issues
 - move mapbox token out of js?
 - add visitor centers
 - slug web addresses for park detail pages
