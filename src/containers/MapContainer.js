@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { saveMapPosition } from '../actions/mapActions';
 import { fetchVisitorcenters, clearVisitorCenters } from '../actions/npsActions';
 import convertLatLng from '../helpers/mapHelpers';
-import ParkMarker from '../components/ParkMarker';
+import ParkMarker from '../containers/ParkMarker';
 import CenterMarker from '../components/CenterMarker';
 
 class MapContainer extends React.Component {

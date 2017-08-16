@@ -9,7 +9,7 @@ import contextWrapper from '../helpers/contextWrapper';
 import convertLatLng from '../helpers/mapHelpers';
 import { postRating } from '../actions/npsActions';
 import { changeRatingInput, flagSubmitted } from '../actions/userActions';
-import RatingForm from './RatingForm';
+import RatingForm from '../components/RatingForm';
 
 class ParkMarker extends React.Component {
 
@@ -44,14 +44,7 @@ class ParkMarker extends React.Component {
         <span>
           {this.props.park.fullName}
           <br/>
-          Rating: {this.props.park.rating}
-          <br/>
-          <a href=""
-            data-position={position}
-            data-parkcode={this.props.park.parkCode}
-            onClick={this.props.handleZoomClick}
-            >Zoom</a>
-          <LinkWithContext to={`/parks/${this.props.park.id}`}>Details</LinkWithContext>
+          Rating: {this.props.park.rating.toFixed(2)}
           <br/>
           <RatingForm
             ratingInput={this.props.user.ratings[this.props.park.parkCode]}
@@ -59,6 +52,13 @@ class ParkMarker extends React.Component {
             handleRatingSubmit={this.handleRatingSubmit}
             submitted={this.props.user.submitted.includes(this.props.park.parkCode)}
           />
+          <a href=""
+            data-position={position}
+            data-parkcode={this.props.park.parkCode}
+            onClick={this.props.handleZoomClick}
+            >Zoom</a>
+          <LinkWithContext to={`/parks/${this.props.park.id}`}>Details</LinkWithContext>
+          <br/>
         </span>
       </Popup>
     </Marker>
