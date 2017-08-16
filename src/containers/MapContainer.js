@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, TileLayer, Marker } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -8,6 +8,7 @@ import { saveMapPosition } from '../actions/mapActions';
 import { fetchVisitorcenters } from '../actions/npsActions';
 import convertLatLng from '../helpers/mapHelpers';
 import ParkMarker from '../components/ParkMarker';
+import CenterMarker from '../components/CenterMarker';
 
 class MapContainer extends React.Component {
 
@@ -41,8 +42,7 @@ class MapContainer extends React.Component {
     })
 
     const centerMarkers = this.props.centers.map((center, index) => {
-      const position = convertLatLng(center.latLong)
-      return <Marker position={position} key={index}></Marker>
+      return <CenterMarker center={center} key={index} />
     })
 
     return <Map center={this.props.map.center}

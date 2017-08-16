@@ -1,14 +1,11 @@
 High
 - Add additional info on popups <- ratings
-- add ratings column to parks table
-- add to model
 - build update endpoint
 - add rating to react
 - on zoom out past 9, remove visitor center markers
 
 Moderate
 - move mapbox token out of js?
-- add visitor centers
 - slug web addresses for park detail pages
 
 Low
