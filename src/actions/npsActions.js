@@ -36,3 +36,9 @@ export function fetchVisitorcenters(parkCode) {
     }))
   }
 }
+
+export function clearVisitorCenters() {
+  return {
+    type: 'CLEAR_CENTERS',
+  }
+}

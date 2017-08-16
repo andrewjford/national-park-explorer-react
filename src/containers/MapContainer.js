@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 import { saveMapPosition } from '../actions/mapActions';
-import { fetchVisitorcenters } from '../actions/npsActions';
+import { fetchVisitorcenters, clearVisitorCenters } from '../actions/npsActions';
 import convertLatLng from '../helpers/mapHelpers';
 import ParkMarker from '../components/ParkMarker';
 import CenterMarker from '../components/CenterMarker';
@@ -18,6 +18,12 @@ class MapContainer extends React.Component {
     leafletMap.on('moveend', () => {
       this.props.saveMapPosition(leafletMap.getCenter(), leafletMap.getZoom());
     });
+
+    leafletMap.on('zoomend', (event) => {
+      if(event.target._zoom < 8){
+        this.props.clearVisitorCenters();
+      }
+    })
   }
 
   // to set this react routing context for leaflet elements to access
@@ -72,6 +78,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     saveMapPosition: saveMapPosition,
     fetchVisitorcenters: fetchVisitorcenters,
+    clearVisitorCenters: clearVisitorCenters
   }, dispatch)
 }
 

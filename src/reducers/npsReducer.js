@@ -20,6 +20,8 @@ function npsReducer(state = {parks: [], currentPark:{}, centers: []}, action) {
       else {
         return state;
       }
+    case 'CLEAR_CENTERS':
+      return {...state, centers: []};
     default:
       return state;
   }
