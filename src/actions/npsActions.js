@@ -42,3 +42,13 @@ export function clearVisitorCenters() {
     type: 'CLEAR_CENTERS',
   }
 }
+
+export function postRating(id, rating) {
+  return (dispatch) => {
+    return fetch(API_URL + `parks/${id}`, {
+      method: 'POST',
+      body: {rating: rating},
+     })
+    .then(response => response)
+  }
+}

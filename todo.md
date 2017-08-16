@@ -2,7 +2,7 @@ High
 - Add additional info on popups <- ratings
 - build update endpoint
 - add rating to react
-- on zoom out past 9, remove visitor center markers
+- google maps directions link on visitor center popup
 
 Moderate
 - move mapbox token out of js?
