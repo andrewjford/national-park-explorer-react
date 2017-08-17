@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-const API_URL = 'http://localhost:3001/';
+const API_URL = 'https://npe-backend.herokuapp.com/';
 
 export function fetchParks() {
 
