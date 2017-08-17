@@ -3,7 +3,6 @@ High
 
 Moderate
 - google maps directions link on visitor center popup
-- move mapbox token out of js?
 - slug web addresses for park detail pages
 
 Low
@@ -22,4 +21,4 @@ Bugs
 
 BACKEND
 
-- 
+-
