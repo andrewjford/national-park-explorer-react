@@ -1,20 +1,30 @@
 import React from 'react';
+import StarRatingComponent from 'react-star-rating-component';
 
 const RatingForm = (props) => {
 
   if(props.submitted){
-    return <span>Your rating: {props.ratingInput}<br/></span>
+    return <span>Your rating:
+      <div style={{lineHeight: "60%", display: "inline-block"}}>
+        <StarRatingComponent
+          name="rate1"
+          starCount={5}
+          value={props.ratingInput}/>
+      </div>
+      <br/>
+    </span>
   }
 
-  return <form onSubmit={props.handleRatingSubmit}>
+  return <form className="star-form" onSubmit={props.handleRatingSubmit}>
     Your Rating:
-    <select value={props.ratingInput} onChange={props.handleRatingChange}>
-      <option value="5">5</option>
-      <option value="4">4</option>
-      <option value="3">3</option>
-      <option value="2">2</option>
-      <option value="1">1</option>
-    </select>
+    <div style={{lineHeight: "60%", display: "inline-block"}}>
+      <StarRatingComponent
+        name="rate1"
+        starCount={5}
+        value={props.ratingInput}
+        onStarClick={props.handleRatingChange}/>
+    </div>
+    <br/>
     <input type="submit"/>
   </form>
 }

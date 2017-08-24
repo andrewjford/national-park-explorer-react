@@ -24,7 +24,7 @@ class ParkMarker extends React.Component {
   }
 
   handleRatingChange = (event) => {
-    this.props.changeRatingInput(this.props.park.parkCode, event.target.value);
+    this.props.changeRatingInput(this.props.park.parkCode, event);
   }
 
   render() {
