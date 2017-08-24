@@ -25,7 +25,7 @@ const RatingForm = (props) => {
         onStarClick={props.handleRatingChange}/>
     </div>
     <br/>
-    <input type="submit"/>
+    <input type="submit" value="Rate"/>
   </form>
 }
 
