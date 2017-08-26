@@ -4,6 +4,7 @@ High
 Moderate
 - google maps directions link on visitor center popup
 - slug web addresses for park detail pages
+- disable changing stars after submitted
 
 Low
 - Change map marker icon
