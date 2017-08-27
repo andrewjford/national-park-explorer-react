@@ -14,7 +14,7 @@ import RatingForm from '../components/RatingForm';
 class ParkMarker extends React.Component {
 
   componentDidMount() {
-    this.props.changeRatingInput(this.props.park.parkCode, 3);
+    this.props.changeRatingInput(this.props.park.parkCode, this.props.park.rating);
   }
 
   handleRatingSubmit = (event) => {
