@@ -9,7 +9,9 @@ const RatingForm = (props) => {
         <StarRatingComponent
           name="rate1"
           starCount={5}
-          value={props.ratingInput}/>
+          value={props.ratingInput}
+          editing={false}
+        />
       </div>
       <br/>
     </span>
