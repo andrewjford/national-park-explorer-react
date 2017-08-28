@@ -39,10 +39,6 @@ class MapContainer extends React.Component {
     this.leafletMap.leafletElement.flyTo(position, 9);
   }
 
-  handleRatingSubmit = (event) => {
-    event.preventDefault();
-  }
-
   render() {
     const markers = this.props.parks.map((park, index) => {
       return <ParkMarker park={park}
