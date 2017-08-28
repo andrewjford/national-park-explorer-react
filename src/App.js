@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import { fetchParks } from './actions/npsActions';
 import About from './components/About';
 import Footer from './components/Footer';
+import ParkListContainer from './containers/ParkListContainer';
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
             <Route exact path="/parks" component={MapContainer} />
             <Route exact path="/parks/:id" component={ParkContainer} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/parklist" component={ParkListContainer} />
           </main>
           <Footer />
         </div>
