@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
 
-import ParkLike from '../components/ParkLike';
+import ParkItem from '../components/ParkItem';
 
 class ParkListContainer extends React.Component {
 
   render(){
     const parks = this.props.parks.map((park) => {
-      return <ParkLike
+      return <ParkItem
         park={park}
       />
     })
