@@ -1,5 +1,9 @@
 # National Park Explorer
 
+A map based web application for exploring U.S. National Parks.
+
+Demo: https://natl-park-explorer.herokuapp.com/
+
 Back end API: https://github.com/andrewjford/national-park-explorer-api
 
 This is a React app created with create-react-app. It pulls National Park Service data from/through a back end API (see link above).
