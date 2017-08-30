@@ -3,7 +3,7 @@ import ConditionalImg from './ConditionalImg';
 
 const Park = (props) => {
 
-  return <div className="parkContainer">
+  return <div className="park-container">
     <h1>{props.park.fullName}</h1>
     <figure>
       <img src={props.park.images[0].url} alt={props.park.images[0].altText}/>

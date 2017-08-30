@@ -73,12 +73,20 @@ nav .nav-link {
   margin: 0 auto;
 }
 
-.parkContainer {
+.park-container {
   width: 80%;
   margin: 0 auto;
   padding-bottom: 128px;
 }
 
-.parkContainer img {
+.park-container img {
   width: 100%;
+}
+
+.parklist-container {
+  padding-bottom: 64px;
+}
+
+.parklist-container li {
+  list-style: none;
 }
