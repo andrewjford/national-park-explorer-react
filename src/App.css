@@ -87,6 +87,15 @@ nav .nav-link {
   padding-bottom: 64px;
 }
 
+.parklist-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.parklist-container a:hover {
+  text-decoration: underline;
+}
+
 .parklist-container li {
   list-style: none;
 }

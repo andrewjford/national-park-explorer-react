@@ -6,7 +6,15 @@ import ParkItem from '../components/ParkItem';
 class ParkListContainer extends React.Component {
 
   render(){
-    const parks = this.props.parks.map((park, index) => {
+    const sorted_parks = this.props.parks.sort((a,b) => {
+      if(a.fullName < b.fullName){
+        return -1;
+      }
+      else{
+        return 1;
+      }
+    })
+    const parks = sorted_parks.map((park, index) => {
       return <ParkItem
         key={index}
         park={park}

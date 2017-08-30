@@ -25,10 +25,9 @@ class App extends Component {
           <Navbar />
           <main>
             <Route exact path="/" component={MapContainer} />
-            <Route exact path="/parks" component={MapContainer} />
+            <Route exact path="/parks" component={ParkListContainer} />
             <Route exact path="/parks/:id" component={ParkContainer} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/parklist" component={ParkListContainer} />
           </main>
           <Footer />
         </div>
