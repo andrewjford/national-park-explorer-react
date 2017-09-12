@@ -44,6 +44,12 @@ h1 {
   padding-right: 2px;
 }
 
+.loading {
+  z-index: 33100;
+  top: 50%;
+  left: 50%;
+}
+
 main {
   padding-top: 45px;
   width: 100%;
