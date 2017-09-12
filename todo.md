@@ -17,6 +17,7 @@ Low
 
 Bugs
 - moveend event trigger gets fired twice on Leaflet Map
+- map crashes in SE alaska
 
 
 BACKEND
