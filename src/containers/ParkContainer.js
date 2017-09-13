@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { fetchPark } from '../actions/npsActions';
-import Park from '../components/Park'
+import Park from '../components/Park';
+import Loading from '../components/Loading';
 
 class ParkContainer extends React.Component {
 
@@ -17,7 +18,7 @@ class ParkContainer extends React.Component {
       return <Park park={this.props.park} />
     }
     else {
-      return <p>Loading...</p>
+      return <Loading loaded={false} />
     }
 
   }

@@ -1,9 +1,16 @@
+:root {
+  --main-bg-color: #edf2fb;
+  --primary-color: #64a572;
+  --border-color: #5d422b;
+  --secondary-color:
+}
+
 html, body, #root {
   height: 100%;
 }
 
 .App {
-  background-color: #edf2fb;
+  background-color: var(--main-bg-color);
   min-height: 100%;
   position: relative;
 }
@@ -14,9 +21,9 @@ figcaption {
 }
 
 .footer {
-  background-color: #8ab1ac;
+  background-color: var(--primary-color);
   padding: 4px 0 4px;
-  border-top: solid #5d422b;
+  border-top: solid var(--border-color);
   color: white;
   text-align: center;
   font-size: 0.8em;
@@ -56,9 +63,9 @@ main {
 }
 
 nav {
-  background-color: #8ab1ac;
+  background-color: var(--primary-color);
   padding: 12px 12px;
-  border-bottom: solid #5d422b;
+  border-bottom: solid var(--border-color);
 
   position: fixed;
   top: 0;
@@ -68,7 +75,7 @@ nav {
 nav .nav-link {
   width: 100px;
   padding: 12px;
-  background: #8ab1ac;
+  background: var(--primary-color);
   color: white;
   text-decoration: none;
   font-weight: bold;
