@@ -17,7 +17,11 @@ class MapContainer extends React.Component {
     const leafletMap = this.leafletMap.leafletElement;
 
     leafletMap.on('moveend', () => {
-      this.props.saveMapPosition(leafletMap.getCenter(), leafletMap.getZoom());
+      //round coords to 2 decimals to stop overlooping of movement
+      const center = leafletMap.getCenter();
+      const roundedCenter = [Math.round(center.lat * 100)/100, Math.round(center.lng * 100)/100];
+
+      this.props.saveMapPosition(roundedCenter, leafletMap.getZoom());
     });
 
     leafletMap.on('zoomend', (event) => {

@@ -11,6 +11,7 @@ import userReducer from './reducers/userReducer';
 import {createStore, applyMiddleware} from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const rootReducer = combineReducers({
   nps: npsReducer,
@@ -19,7 +20,7 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(
-  rootReducer, applyMiddleware(thunk),
+  rootReducer, composeWithDevTools(applyMiddleware(thunk),)
 );
 
 ReactDOM.render(
