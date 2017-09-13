@@ -1,11 +1,11 @@
 import React from 'react';
-import { Map, TileLayer } from 'react-leaflet';
+import { Map, TileLayer, Marker } from 'react-leaflet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 import { saveMapPosition } from '../actions/mapActions';
-import { fetchVisitorcenters, clearVisitorCenters } from '../actions/npsActions';
+import { fetchVisitorCenters, clearVisitorCenters } from '../actions/npsActions';
 import convertLatLng from '../helpers/mapHelpers';
 import ParkMarker from '../containers/ParkMarker';
 import CenterMarker from '../components/CenterMarker';
@@ -26,7 +26,7 @@ class MapContainer extends React.Component {
   componentWillUnmount() {
     const leafletMap = this.leafletMap.leafletElement;
 
-    //save current position of map 
+    //save current position of map
     this.props.saveMapPosition(leafletMap.getCenter(), leafletMap.getZoom());
   }
 
@@ -37,7 +37,7 @@ class MapContainer extends React.Component {
 
   handleZoomClick = (event) => {
     event.preventDefault();
-    this.props.fetchVisitorcenters(event.target.dataset.parkcode)
+    this.props.fetchVisitorCenters(event.target.dataset.parkcode)
 
     let position = convertLatLng(event.target.dataset.position);
     this.leafletMap.leafletElement.flyTo(position, 9);
@@ -54,6 +54,10 @@ class MapContainer extends React.Component {
     const centerMarkers = this.props.centers.map((center, index) => {
       return <CenterMarker center={center} key={index} />
     })
+
+    // const siteMarkers = this.props.sites.map((site, index) => {
+    //   return <Marker position={site.latLong} key={index} />
+    // })
 
     return <Map center={this.props.map.center}
         zoom={this.props.map.zoom}
@@ -82,7 +86,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     saveMapPosition: saveMapPosition,
-    fetchVisitorcenters: fetchVisitorcenters,
+    fetchVisitorCenters: fetchVisitorCenters,
     clearVisitorCenters: clearVisitorCenters
   }, dispatch)
 }

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import convertLatLng from '../helpers/mapHelpers';
 import { saveMapPosition } from '../actions/mapActions';
-import { fetchVisitorcenters } from '../actions/npsActions';
+import { fetchVisitorCenters } from '../actions/npsActions';
 
 class ParkItem extends React.Component {
 
@@ -14,7 +14,7 @@ class ParkItem extends React.Component {
     const position = convertLatLng(this.props.park.latLong);
     this.props.saveMapPosition(position, 9);
     //load visitor centers
-    this.props.fetchVisitorcenters(this.props.park.parkCode);
+    this.props.fetchVisitorCenters(this.props.park.parkCode);
   }
 
   render(){
@@ -28,7 +28,7 @@ class ParkItem extends React.Component {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     saveMapPosition: saveMapPosition,
-    fetchVisitorcenters: fetchVisitorcenters
+    fetchVisitorCenters: fetchVisitorCenters
   }, dispatch)
 }
 

@@ -3,9 +3,7 @@ import fetch from 'isomorphic-fetch';
 const API_URL = process.env.REACT_APP_API_URL;
 
 export function fetchParks() {
-
   return (dispatch) => {
-
     return fetch(API_URL + 'parks')
     .then(response => response.json())
     .then(json => dispatch({
@@ -26,7 +24,7 @@ export function fetchPark(id) {
   }
 }
 
-export function fetchVisitorcenters(parkCode) {
+export function fetchVisitorCenters(parkCode) {
   return (dispatch) => {
     return fetch(API_URL + `centers?parkCode=`+ parkCode)
     .then(response => response.json())
