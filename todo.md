@@ -11,13 +11,10 @@ Low
   - Allow changes to map marker icon
 - adjust file sizes
 - try other images if 404'd
-- change map tile
 - image carousel on detail page
 - search by name
 
 Bugs
-- moveend event trigger gets fired twice on Leaflet Map
-- map crashes in SE alaska
 
 
 BACKEND

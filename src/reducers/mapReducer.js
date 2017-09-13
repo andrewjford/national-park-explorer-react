@@ -1,6 +1,4 @@
-function mapReducer(state = {
-  center: [37.0902, -95.7129],
-  zoom: 4
+function mapReducer(state = { center: [37.0902, -95.7129], zoom: 4
 }, action) {
   switch(action.type){
     case 'SAVE_MAP_POSITION':
