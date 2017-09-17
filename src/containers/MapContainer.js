@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, TileLayer, Marker } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -10,6 +10,7 @@ import convertLatLng from '../helpers/mapHelpers';
 import ParkMarker from '../containers/ParkMarker';
 import CenterMarker from '../components/CenterMarker';
 import Loading from '../components/Loading';
+import SiteMarker from '../components/SiteMarker';
 
 class MapContainer extends React.Component {
 
@@ -55,9 +56,12 @@ class MapContainer extends React.Component {
       return <CenterMarker center={center} key={index} />
     })
 
-    // const siteMarkers = this.props.sites.map((site, index) => {
-    //   return <Marker position={site.latLong} key={index} />
-    // })
+    let siteMarkers = <div/>
+    if(this.leafletMap && this.leafletMap.leafletElement.getZoom() > 6){
+      siteMarkers = this.props.sites.map((site, index) => {
+        return <SiteMarker site={site} key={index} />
+      })
+    }
 
     return <Map center={this.props.map.center}
         zoom={this.props.map.zoom}
@@ -70,6 +74,7 @@ class MapContainer extends React.Component {
         />
         {centerMarkers}
         {markers}
+        {siteMarkers}
         <Loading loaded={this.props.parks.length > 0} />
       </Map>
   }
@@ -79,7 +84,8 @@ const mapStateToProps = (state) => {
   return {
     parks: state.nps.parks,
     map: state.map,
-    centers: state.nps.centers
+    centers: state.nps.centers,
+    sites: state.site.sites,
   }
 }
 

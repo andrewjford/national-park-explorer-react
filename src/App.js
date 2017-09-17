@@ -8,6 +8,7 @@ import MapContainer from './containers/MapContainer';
 import ParkContainer from './containers/ParkContainer';
 import Navbar from './components/Navbar';
 import { fetchParks } from './actions/npsActions';
+import { fetchSites } from './actions/siteActions';
 import About from './components/About';
 import Footer from './components/Footer';
 import ParkListContainer from './containers/ParkListContainer';
@@ -16,6 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchParks();
+    this.props.fetchSites();
   }
 
   render() {
@@ -39,6 +41,7 @@ class App extends Component {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchParks: fetchParks,
+    fetchSites: fetchSites,
   }, dispatch)
 }
 
