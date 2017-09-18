@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, TileLayer } from 'react-leaflet';
+import { Map, TileLayer, LayersControl, LayerGroup } from 'react-leaflet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -57,7 +57,7 @@ class MapContainer extends React.Component {
     })
 
     let siteMarkers = <div/>
-    if(this.leafletMap && this.leafletMap.leafletElement.getZoom() > 6){
+    if(this.leafletMap && this.leafletMap.leafletElement.getZoom() > 5){
       siteMarkers = this.props.sites.map((site, index) => {
         return <SiteMarker site={site} key={index} />
       })
@@ -72,9 +72,15 @@ class MapContainer extends React.Component {
           attribution='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
           url="https://api.tiles.mapbox.com/v4/mapbox.outdoors/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYWpvZWZvcmQiLCJhIjoiY2o2NnhqM3F0MDB0bDJxbjY0dXAwYnRwaSJ9.KqwaHtjfnfhFjk1SQrd93Q"
         />
+        <LayersControl position="topright">
+          <LayersControl.Overlay name="Sites">
+            <LayerGroup>
+              {siteMarkers}
+            </LayerGroup>
+          </LayersControl.Overlay>
+        </LayersControl>
         {centerMarkers}
         {markers}
-        {siteMarkers}
         <Loading loaded={this.props.parks.length > 0} />
       </Map>
   }
