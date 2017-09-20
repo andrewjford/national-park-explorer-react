@@ -14,18 +14,12 @@ class ParkContainer extends React.Component {
 
   render() {
 
-    if (this.props.park.db_id === this.props.id){
+    if (this.props.park.db_id === this.props.id || this.props.park.id){
       return <Park park={this.props.park} />
     }
     else {
-      if(this.props.park.errors){
-        return <p className="park-error">The National Park Service Data API appears to be down. Please try again later.</p>
-      }
-      else {
-        return <Loading loaded={false} />
-      }
+      return <Loading loaded={false} />
     }
-
   }
 }
 

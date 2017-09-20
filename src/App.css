@@ -82,8 +82,8 @@ nav .nav-link {
 }
 
 .park-error {
-  margin: 0 auto;
-  padding: 1.2em 1em 1em 1em;
+  color: red;
+  font-size: 0.9em;
 }
 
 .page-container {

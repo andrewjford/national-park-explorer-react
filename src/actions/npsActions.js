@@ -18,7 +18,8 @@ export function fetchPark(id) {
     return fetch(API_URL + `nps/parks/${id}`)
     .then(response => response.json())
     .then(json => {
-      if(!json.errors){
+      if(json.data){
+        // info is from NPS API
         dispatch({
           type: 'FETCH_PARK_DETAILS',
           payload: json.data[0],
@@ -26,6 +27,7 @@ export function fetchPark(id) {
         return true;
       }
       else {
+        // info is from local db
         dispatch({
           type: 'FETCH_PARK_DETAILS',
           payload: json,
