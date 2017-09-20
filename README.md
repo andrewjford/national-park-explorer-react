@@ -2,7 +2,7 @@
 
 A map based web application for exploring U.S. National Parks.
 
-Demo: https://natl-park-explorer.herokuapp.com/
+Demo: https://natl-park-explorer.netlify.com/
 
 Back end API: https://github.com/andrewjford/national-park-explorer-api
 
