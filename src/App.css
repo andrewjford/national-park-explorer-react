@@ -81,6 +81,11 @@ nav .nav-link {
   font-weight: bold;
 }
 
+.park-error {
+  margin: 0 auto;
+  padding: 1.2em 1em 1em 1em;
+}
+
 .page-container {
   width: 80%;
   margin: 0 auto;

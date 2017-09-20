@@ -17,10 +17,21 @@ export function fetchPark(id) {
   return (dispatch) => {
     return fetch(API_URL + `nps/parks/${id}`)
     .then(response => response.json())
-    .then(json => dispatch({
-      type: 'FETCH_PARK_DETAILS',
-      payload: json.data[0],
-    }))
+    .then(json => {
+      if(!json.errors){
+        dispatch({
+          type: 'FETCH_PARK_DETAILS',
+          payload: json.data[0],
+        })
+        return true;
+      }
+      else {
+        dispatch({
+          type: 'FETCH_PARK_DETAILS',
+          payload: json,
+        })
+      }
+    })
   }
 }
 

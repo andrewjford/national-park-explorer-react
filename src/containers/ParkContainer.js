@@ -18,7 +18,12 @@ class ParkContainer extends React.Component {
       return <Park park={this.props.park} />
     }
     else {
-      return <Loading loaded={false} />
+      if(this.props.park.errors){
+        return <p className="park-error">The National Park Service Data API appears to be down. Please try again later.</p>
+      }
+      else {
+        return <Loading loaded={false} />
+      }
     }
 
   }
