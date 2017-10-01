@@ -5,12 +5,15 @@ import { bindActionCreators } from 'redux';
 import {
   changeEmailInput,
   changePasswordInput,
+  closeLoginWindow,
+  clearLoginInput,
 } from '../actions/sessionActions';
 
 class Login extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    alert(this.props.session.input.password)
   }
 
   handleEmailChange = (event) => {
@@ -21,8 +24,15 @@ class Login extends React.Component {
     this.props.changePasswordInput(event.target.value);
   }
 
+  handleOutsideClick = (event) => {
+    if(event.target.classList.contains("overlay-blanket")){
+      this.props.closeLoginWindow();
+      this.props.clearLoginInput();
+    }
+  }
+
   render() {
-    return <div className="overlay-blanket">
+    return <div className="overlay-blanket" onClick={this.handleOutsideClick}>
       <div className="center-overlay">
         <div className="center-relative">
           <h2>Login</h2>
@@ -57,6 +67,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     changeEmailInput: changeEmailInput,
     changePasswordInput: changePasswordInput,
+    closeLoginWindow: closeLoginWindow,
+    clearLoginInput: clearLoginInput,
   }, dispatch)
 }
 

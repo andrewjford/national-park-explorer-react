@@ -44,6 +44,31 @@ class MapContainer extends React.Component {
     this.leafletMap.leafletElement.flyTo(position, 9);
   }
 
+  disableMap = () => {
+    const leafletMap = this.leafletMap.leafletElement;
+
+    leafletMap.dragging.disable();
+    leafletMap.touchZoom.disable();
+    leafletMap.doubleClickZoom.disable();
+    leafletMap.scrollWheelZoom.disable();
+    leafletMap.boxZoom.disable();
+    leafletMap.keyboard.disable();
+  }
+
+  enableMap = () => {
+    //re-enable if leafletMap is mounted
+    if(this.leafletMap){
+      const leafletMap = this.leafletMap.leafletElement;
+
+      leafletMap.dragging.enable();
+      leafletMap.touchZoom.enable();
+      leafletMap.doubleClickZoom.enable();
+      leafletMap.scrollWheelZoom.enable();
+      leafletMap.boxZoom.enable();
+      leafletMap.keyboard.enable();
+    }
+  }
+
   render() {
     const markers = this.props.parks.map((park, index) => {
       return <ParkMarker park={park}
@@ -55,6 +80,17 @@ class MapContainer extends React.Component {
     const centerMarkers = this.props.centers.map((center, index) => {
       return <CenterMarker center={center} key={index} />
     })
+
+    const loginModal = () => {
+      if(this.props.session.loginOpen){
+        this.disableMap();
+        return <Login />
+      }
+      else {
+        this.enableMap();
+        return null;
+      }
+    }
 
     // const siteMarkers = this.props.sites.map((site, index) => {
     //   return <Marker position={site.latLong} key={index} />
@@ -72,7 +108,7 @@ class MapContainer extends React.Component {
         {centerMarkers}
         {markers}
         <Loading loaded={this.props.parks.length > 0} />
-        <Login />
+        {loginModal()}
       </Map>
   }
 }
@@ -81,7 +117,8 @@ const mapStateToProps = (state) => {
   return {
     parks: state.nps.parks,
     map: state.map,
-    centers: state.nps.centers
+    centers: state.nps.centers,
+    session: state.session
   }
 }
 
@@ -89,7 +126,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     saveMapPosition: saveMapPosition,
     fetchVisitorCenters: fetchVisitorCenters,
-    clearVisitorCenters: clearVisitorCenters
+    clearVisitorCenters: clearVisitorCenters,
   }, dispatch)
 }
 

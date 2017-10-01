@@ -13,6 +13,8 @@ function sessionReducer(
       return {...state, loginOpen: true}
     case "CLOSE_LOGIN_WINDOW":
       return {...state, loginOpen: false}
+    case "CLEAR_LOGIN_INPUT":
+      return {...state, input: {email: "", password: ""}}
     default:
       return state;
   }

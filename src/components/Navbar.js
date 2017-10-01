@@ -1,11 +1,15 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { openLoginWindow } from '../actions/sessionActions';
 
 class Navbar extends React.Component {
 
   handleLoginClick = (event) => {
     event.preventDefault();
-    alert('keks');
+    this.props.openLoginWindow();
   }
 
   render() {
@@ -40,4 +44,10 @@ class Navbar extends React.Component {
 
 }
 
-export default Navbar;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    openLoginWindow: openLoginWindow,
+  }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Navbar);
