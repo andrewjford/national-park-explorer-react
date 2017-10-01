@@ -9,6 +9,7 @@ import npsReducer from './reducers/npsReducer';
 import mapReducer from './reducers/mapReducer';
 import userReducer from './reducers/userReducer';
 import siteReducer from './reducers/siteReducer';
+import sessionReducer from './reducers/sessionReducer';
 import {createStore, applyMiddleware} from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   map: mapReducer,
   user: userReducer,
   site: siteReducer,
+  session: sessionReducer,
 });
 
 const store = createStore(

@@ -1,29 +1,42 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-const Navbar = (props) => {
-  return <nav>
-      <NavLink to="/"
-      exact
-      className="nav-link"
-      activeStyle={{
-        background: '#1f634c'
-      }} >National Park Explorer</NavLink>
+class Navbar extends React.Component {
 
-      <NavLink to="/parks"
-      exact
-      className="nav-link"
-      activeStyle={{
-        background: '#1f634c'
-      }} >Parks</NavLink>
+  handleLoginClick = (event) => {
+    event.preventDefault();
+    alert('keks');
+  }
 
-      <NavLink to="/about"
-      className="nav-link"
-      activeStyle={{
-        background: '#1f634c'
-      }}
-      >About</NavLink>
-    </nav>
+  render() {
+    return <nav>
+        <NavLink to="/"
+        exact
+        className="nav-link"
+        activeStyle={{
+          background: '#1f634c'
+        }} >National Park Explorer</NavLink>
+
+        <NavLink to="/parks"
+        exact
+        className="nav-link"
+        activeStyle={{
+          background: '#1f634c'
+        }} >Parks</NavLink>
+
+        <NavLink to="/about"
+        className="nav-link"
+        activeStyle={{
+          background: '#1f634c'
+        }}
+        >About</NavLink>
+
+        <a onClick={this.handleLoginClick}
+          href=""
+          className="nav-link"
+        >Login</a>
+      </nav>
+  }
 
 }
 

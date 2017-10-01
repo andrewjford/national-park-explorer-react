@@ -15,9 +15,37 @@ html, body, #root {
   position: relative;
 }
 
+.center-button {
+  width: 4em;
+  margin: auto;
+  margin-top: 1em;
+}
+
+.center-overlay {
+  z-index: 33100;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+}
+
+.center-relative {
+  position: relative;
+  left: -50%;
+  background-color: #edf5ef;
+  border: 1px solid var(--border-color);
+  border-radius: 0.2em;
+  padding: 1.5em 4em 4em;
+  text-align: center;
+}
+
 figcaption {
   font-style: italic;
   font-size: 0.9em;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer {
@@ -79,6 +107,14 @@ nav .nav-link {
   color: white;
   text-decoration: none;
   font-weight: bold;
+}
+
+.overlay-blanket {
+  z-index: 33100;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .park-error {

@@ -10,6 +10,7 @@ import convertLatLng from '../helpers/mapHelpers';
 import ParkMarker from '../containers/ParkMarker';
 import CenterMarker from '../components/CenterMarker';
 import Loading from '../components/Loading';
+import Login from '../components/Login';
 
 class MapContainer extends React.Component {
 
@@ -71,6 +72,7 @@ class MapContainer extends React.Component {
         {centerMarkers}
         {markers}
         <Loading loaded={this.props.parks.length > 0} />
+        <Login />
       </Map>
   }
 }
