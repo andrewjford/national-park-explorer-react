@@ -8,6 +8,9 @@ export function loginUser(credentials) {
           sessionStorage.setItem('jwt', response.jwt);
           dispatch(loginSuccess());
         }
+        else {
+          dispatch(loginFailure());
+        }
       })
       .catch(error => {
         throw(error);
@@ -59,5 +62,11 @@ export function closeLoginWindow() {
 export function clearLoginInput() {
   return {
     type: 'CLEAR_LOGIN_INPUT'
+  }
+}
+
+export function loginFailure() {
+  return {
+    type: 'LOGIN_FAILURE'
   }
 }

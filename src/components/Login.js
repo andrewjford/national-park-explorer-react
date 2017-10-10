@@ -43,6 +43,7 @@ class Login extends React.Component {
       <div className="center-overlay">
         <div className="center-relative">
           <h2>Login</h2>
+          {this.props.session.message ? <span>{this.props.session.message}</span> : null}
           <form className="flex-vertical" onSubmit={this.handleSubmit}>
 
             <input type="text"
