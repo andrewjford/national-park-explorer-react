@@ -7,13 +7,21 @@ import {
   changePasswordInput,
   closeLoginWindow,
   clearLoginInput,
+  loginUser
 } from '../actions/sessionActions';
 
 class Login extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    alert(this.props.session.input.password)
+
+    let formInput = {
+      email: this.props.session.input.email,
+      password: this.props.session.input.password
+    }
+
+    this.props.loginUser(formInput);
+    alert(this.props.session.input.password);
   }
 
   handleEmailChange = (event) => {
@@ -69,6 +77,7 @@ const mapDispatchToProps = (dispatch) => {
     changePasswordInput: changePasswordInput,
     closeLoginWindow: closeLoginWindow,
     clearLoginInput: clearLoginInput,
+    loginUser: loginUser,
   }, dispatch)
 }
 
