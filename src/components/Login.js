@@ -21,7 +21,6 @@ class Login extends React.Component {
     }
 
     this.props.loginUser(formInput);
-    alert(this.props.session.input.password);
   }
 
   handleEmailChange = (event) => {

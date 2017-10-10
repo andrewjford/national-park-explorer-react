@@ -1,5 +1,5 @@
 function sessionReducer(
-  state = {session: {},
+  state = {session: !!sessionStorage.jwt,
     input: {email: "", password: ""},
     loginOpen: false
   }, action) {
@@ -15,6 +15,8 @@ function sessionReducer(
       return {...state, loginOpen: false}
     case "CLEAR_LOGIN_INPUT":
       return {...state, input: {email: "", password: ""}}
+    case "LOGIN_SUCCESS":
+      return {...state, input: {email: "", password: ""}, session: !!sessionStorage.jwt}
     default:
       return state;
   }

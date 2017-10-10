@@ -17,7 +17,7 @@ export function loginUser(credentials) {
 
 export function loginSuccess() {
   return {
-    type: 'LOG_IN_SUCCESS'
+    type: 'LOGIN_SUCCESS'
   }
 }
 
