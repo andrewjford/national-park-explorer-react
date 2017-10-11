@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import FlashMessage from './FlashMessage';
 import {
   changeEmailInput,
   changePasswordInput,
@@ -38,14 +39,19 @@ class Login extends React.Component {
     }
   }
 
+  handleSignupClick = (event) => {
+    event.preventDefault();
+    this.props.closeLoginWindow();
+  }
+
   render() {
     return <div className="overlay-blanket" onClick={this.handleOutsideClick}>
       <div className="center-overlay">
         <div className="center-relative">
           <h2>Login</h2>
-          {this.props.session.message ? <span>{this.props.session.message}</span> : null}
-          <form className="flex-vertical" onSubmit={this.handleSubmit}>
+          <FlashMessage session={this.props.session}/>
 
+          <form className="flex-vertical" onSubmit={this.handleSubmit}>
             <input type="text"
               placeholder="Email"
               value={this.props.session.input.email}
@@ -59,6 +65,10 @@ class Login extends React.Component {
               Login
             </button>
           </form>
+
+          <span>
+            Not a member? <a href="" onClick={this.handleSignupClick}>Sign Up</a>
+          </span>
         </div>
       </div>
     </div>
