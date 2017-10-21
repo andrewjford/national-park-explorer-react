@@ -10,6 +10,7 @@ import mapReducer from './reducers/mapReducer';
 import userReducer from './reducers/userReducer';
 import siteReducer from './reducers/siteReducer';
 import sessionReducer from './reducers/sessionReducer';
+import modalReducer from './reducers/modalReducer';
 import {createStore, applyMiddleware} from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   site: siteReducer,
   session: sessionReducer,
+  modal: modalReducer,
 });
 
 const store = createStore(
