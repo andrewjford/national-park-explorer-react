@@ -6,10 +6,10 @@ import FlashMessage from './FlashMessage';
 import {
   changeEmailInput,
   changePasswordInput,
-  closeLoginWindow,
   clearLoginInput,
   loginUser
 } from '../actions/sessionActions';
+import { closeLoginWindow } from '../actions/modalActions';
 
 class Login extends React.Component {
 

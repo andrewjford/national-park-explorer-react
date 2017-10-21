@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { openLoginWindow } from '../actions/sessionActions';
+import { openLoginWindow } from '../actions/modalActions';
 
 class Navbar extends React.Component {
 
