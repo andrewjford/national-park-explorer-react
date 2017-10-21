@@ -10,6 +10,7 @@ import convertLatLng from '../helpers/mapHelpers';
 import ParkMarker from '../containers/ParkMarker';
 import CenterMarker from '../components/CenterMarker';
 import Loading from '../components/Loading';
+import ModalContainer from '../containers/ModalContainer';
 import Login from '../components/Login';
 
 class MapContainer extends React.Component {
@@ -81,15 +82,12 @@ class MapContainer extends React.Component {
       return <CenterMarker center={center} key={index} />
     })
 
-    const loginModal = () => {
-      if(this.props.modal.loginOpen){
-        this.disableMap();
-        return <Login />
-      }
-      else {
-        this.enableMap();
-        return null;
-      }
+    // disable map if modals are open
+    if(this.props.modal.loginOpen || this.props.modal.signupOpen){
+      this.disableMap();
+    }
+    else {
+      this.enableMap();
     }
 
     // const siteMarkers = this.props.sites.map((site, index) => {
@@ -108,7 +106,10 @@ class MapContainer extends React.Component {
         {centerMarkers}
         {markers}
         <Loading loaded={this.props.parks.length > 0} />
-        {loginModal()}
+        <ModalContainer
+          enableMap={this.enableMap}
+          disableMap={this.disableMap}
+        />
       </Map>
   }
 }

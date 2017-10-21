@@ -2,29 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Login from '../components/Login';
+import SignupModal from '../components/SignupModal';
 
 class ModalContainer extends React.Component {
   render() {
-    const loginModal = () => {
-      if(this.props.session.loginOpen){
-        this.props.disableMap();
-        return <Login />
-      }
-      else {
-        this.props.enableMap();
-        return null;
-      }
-    }
-    
+
     return <div>
-      {loginModal}
+      {this.props.modal.loginOpen ? <Login /> : null}
+      {this.props.modal.signupOpen ? <SignupModal /> : null}
     </div>
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    session: state.session
+    modal: state.modal
   }
 }
 

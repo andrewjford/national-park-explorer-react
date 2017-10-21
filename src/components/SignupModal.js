@@ -11,3 +11,5 @@ class SignupModal extends React.Component {
     </div>
   }
 }
+
+export default SignupModal;
