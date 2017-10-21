@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -8,7 +8,6 @@ import { openLoginWindow } from '../actions/modalActions';
 class Navbar extends React.Component {
 
   handleLoginClick = (event) => {
-    event.preventDefault();
     this.props.openLoginWindow();
   }
 
@@ -35,10 +34,11 @@ class Navbar extends React.Component {
         }}
         >About</NavLink>
 
-        <a onClick={this.handleLoginClick}
-          href=""
+        <Link
+          onClick={this.handleLoginClick}
           className="nav-link"
-        >Login</a>
+          to={`/`}>Login</Link>
+
       </nav>
   }
 

@@ -19,6 +19,12 @@ class SignupModal extends React.Component {
     }
   }
 
+  handleLoginLink = (event) => {
+    event.preventDefault();
+    this.props.openLoginWindow();
+    this.props.closeSignupWindow();
+  }
+
   render(){
     return <div className="overlay-blanket" onClick={this.handleOutsideClick}>
       <div className="center-overlay">
@@ -29,7 +35,7 @@ class SignupModal extends React.Component {
           <SignupForm />
 
           <span>
-            Already a member? <a href="" onClick={this.loginLinkClick}>Login</a>
+            Already a member? <a href="" onClick={this.handleLoginLink}>Login</a>
           </span>
         </div>
       </div>

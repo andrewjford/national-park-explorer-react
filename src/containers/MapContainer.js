@@ -83,7 +83,9 @@ class MapContainer extends React.Component {
     })
 
     // disable map if modals are open
-    if(this.props.modal.loginOpen || this.props.modal.signupOpen){
+    if((this.props.modal.loginOpen ||
+      this.props.modal.signupOpen) && this.leafletMap){
+
       this.disableMap();
     }
     else {
@@ -106,10 +108,7 @@ class MapContainer extends React.Component {
         {centerMarkers}
         {markers}
         <Loading loaded={this.props.parks.length > 0} />
-        <ModalContainer
-          enableMap={this.enableMap}
-          disableMap={this.disableMap}
-        />
+        <ModalContainer />
       </Map>
   }
 }
