@@ -47,6 +47,13 @@ export function changeEmailInput(newInput) {
   }
 }
 
+export function changeConfirmInput(newInput){
+  return {
+    type: 'CHANGE_PASSWORD_CONFIRM_INPUT',
+    payload: newInput,
+  }
+}
+
 export function clearLoginInput() {
   return {
     type: 'CLEAR_LOGIN_INPUT'

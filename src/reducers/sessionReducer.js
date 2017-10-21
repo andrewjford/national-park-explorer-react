@@ -1,6 +1,6 @@
 function sessionReducer(
   state = {session: !!sessionStorage.jwt,
-    input: {email: "", password: ""},
+    input: {email: "", password: "", passwordConfirm: ""},
     message: ""
   }, action) {
 
@@ -9,6 +9,8 @@ function sessionReducer(
       return {...state, input: {...state.input, email: action.payload}}
     case "CHANGE_PASSWORD_INPUT":
       return {...state, input: {...state.input, password: action.payload}}
+    case "CHANGE_PASSWORD_CONFIRM_INPUT":
+      return {...state, input: {...state.input, passwordConfirm: action.payload}}
     case "CLEAR_LOGIN_INPUT":
       return {...state, input: {email: "", password: ""}}
     case "LOGIN_SUCCESS":
