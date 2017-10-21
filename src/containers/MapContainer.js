@@ -82,7 +82,7 @@ class MapContainer extends React.Component {
     })
 
     const loginModal = () => {
-      if(this.props.session.loginOpen){
+      if(this.props.modal.loginOpen){
         this.disableMap();
         return <Login />
       }
@@ -118,7 +118,8 @@ const mapStateToProps = (state) => {
     parks: state.nps.parks,
     map: state.map,
     centers: state.nps.centers,
-    session: state.session
+    session: state.session,
+    modal: state.modal,
   }
 }
 

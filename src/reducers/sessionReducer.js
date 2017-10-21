@@ -1,7 +1,6 @@
 function sessionReducer(
   state = {session: !!sessionStorage.jwt,
     input: {email: "", password: ""},
-    loginOpen: false,
     message: ""
   }, action) {
 

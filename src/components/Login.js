@@ -9,7 +9,10 @@ import {
   clearLoginInput,
   loginUser
 } from '../actions/sessionActions';
-import { closeLoginWindow } from '../actions/modalActions';
+import {
+  closeLoginWindow,
+  openSignupWindow
+ } from '../actions/modalActions';
 
 class Login extends React.Component {
 
@@ -41,6 +44,7 @@ class Login extends React.Component {
 
   handleSignupClick = (event) => {
     event.preventDefault();
+    this.props.openSignupWindow();
     this.props.closeLoginWindow();
   }
 
@@ -88,6 +92,7 @@ const mapDispatchToProps = (dispatch) => {
     closeLoginWindow: closeLoginWindow,
     clearLoginInput: clearLoginInput,
     loginUser: loginUser,
+    openSignupWindow: openSignupWindow,
   }, dispatch)
 }
 
