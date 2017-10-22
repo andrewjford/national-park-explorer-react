@@ -18,6 +18,22 @@ class SessionApi {
         return error;
       });
   }
+
+  static signup(credentials) {
+    const request = new Request(API_URL+'signup', {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify({user: credentials})
+    });
+
+    return fetch(request)
+      .then(response => response.json())
+      .catch(error => {
+        return error;
+      });
+  }
 }
 
 export default SessionApi;

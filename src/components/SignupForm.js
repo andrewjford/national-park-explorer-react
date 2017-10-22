@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { signupUser } from '../actions/userActions';
 import {
   changeEmailInput,
   changePasswordInput,
-  clearLoginInput,
-  loginUser,
   changeConfirmInput,
 } from '../actions/sessionActions';
 
@@ -17,7 +16,7 @@ class SignupForm extends React.Component {
     let formInput = {
       email: this.props.session.input.email,
       password: this.props.session.input.password,
-      passwordConfirm: this.props.session.input.passwordConfirm
+      password_confirmation: this.props.session.input.passwordConfirm
     }
 
     this.props.signupUser(formInput);
@@ -69,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     changeEmailInput: changeEmailInput,
     changePasswordInput: changePasswordInput,
-    loginUser: loginUser,
+    signupUser: signupUser,
     changeConfirmInput: changeConfirmInput,
   }, dispatch)
 }
