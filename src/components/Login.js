@@ -55,13 +55,15 @@ class Login extends React.Component {
           <h2>Login</h2>
           <FlashMessage session={this.props.session}/>
 
-          <form className="flex-vertical" onSubmit={this.handleSubmit}>
+          <form className="flex-vertical vertical-margins" onSubmit={this.handleSubmit}>
             <input type="text"
+              className="modal-input"
               placeholder="Email"
               value={this.props.session.input.email}
               onChange={this.handleEmailChange}/>
             <br/>
             <input type="password"
+            className="modal-input"
               placeholder="Password"
               value={this.props.session.input.password}
               onChange={this.handlePasswordChange}/>

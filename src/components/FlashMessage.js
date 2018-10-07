@@ -1,7 +1,7 @@
 import React from 'react'
 
 const FlashMessage = (props) => {
-  return <div>
+  return <div className="error-text">
     {props.session.message ? <span>{props.session.message}</span> : null}
   </div>
 }

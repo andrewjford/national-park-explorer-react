@@ -1,6 +1,6 @@
 High
 - modal runs actions through login actions
-- why is login modal typing laggy
+- why is login modal typing laggy - update: not consistent
 
 Moderate
 - slug web addresses for park detail pages
